@@ -16,7 +16,11 @@ mongoose.connect('mongodb+srv://arshdeep725199:NCJqFzws2nPLT2HN@cluster0.3tvhxfz
 .catch(err => console.error('❌ MongoDB connection error:', err));
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: ['https://cre-own-fronend.vercel.app', 'http://localhost:3000'], // include frontend domain(s)
+  credentials: true
+}));
+
 const Category = require('./categore')
 const Product = require('./ProductSchema')
 const Admin = require('./AdminSchema')
